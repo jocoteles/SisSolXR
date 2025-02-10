@@ -100,9 +100,9 @@ Para que os óculos de RV se conectem ao servidor, você precisa configurar seu 
     *   Clique no botão "+" para adicionar uma nova conexão.
     *   Escolha "Wi-Fi" como tipo de conexão e clique em "Criar...".
     *   Na janela "Edição de Wi-Fi", na aba "Wi-Fi":
-        *   **Nome da conexão:** Dê um nome para sua rede hotspot (ex: `SisSol-Hotspot`).
+        *   **Nome da conexão:** Dê um nome para sua rede hotspot (ex: `SisSolXR-Hotspot`).
         *   **Modo:** Selecione "Hotspot".
-        *   **SSID:** Defina o nome que a rede Wi-Fi hotspot terá (ex: `SisSol-AR-Network`).
+        *   **SSID:** Defina o nome que a rede Wi-Fi hotspot terá (ex: `SisSolXR-Network`).
     *   Na aba "Segurança Wi-Fi":
         *   **Segurança:** Escolha "WPA & WPA2 Pessoal".
         *   **Senha:** Defina uma senha para sua rede Wi-Fi.
