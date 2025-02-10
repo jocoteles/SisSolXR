@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/930331951.svg)](https://doi.org/10.5281/zenodo.14845124)
+
 ## *SisSolXR* - Sistema Solar em Realidade Mista
 
 *Exploração Imersiva e Interativa do Sistema Solar em Realidade Mista para Educação em Astronomia*
