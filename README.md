@@ -9,7 +9,7 @@ Este documento está dividido em duas partes:
 - [Instalando o Aplicativo SisSolXR](#instalando-o-aplicativo-sissolxr)
 - [Utilizando o Aplicativo SisSolXR para Atividades Educacionais](#utilizando-o-aplicativo-sissolxr-para-atividades-educacionais)
 
-Esta é uma aplicação web de Realidade Aumentada que simula o Sistema Solar, permitindo a interação síncrona de múltiplos usuários em Realidade Virtual (RV) conectados em uma rede local.
+Esta é uma aplicação web de Realidade Aumentada desenvolvida em A-Frame que simula o Sistema Solar, permitindo a interação síncrona de múltiplos usuários em Realidade Virtual (RV) conectados em uma rede local.
 
 ## Instalando o Aplicativo SisSolXR
 
