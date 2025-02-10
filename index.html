@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sistema Solar</title>
+    <meta name="description" content="Sistema Solar">
+    <script src="aframe/aframe-locals.js"></script>
+    <script src="aframe/info-message.js"></script>    
+    <script src="aframe/color-change.js"></script>        
+    <script src="aframe/button.js"></script>
+    <script src="aframe/menu.js"></script>
+    <script src="aframe/pressable.js"></script>
+    <script src="aframe/event-manager.js"></script>    
+    <script src="config/orbitais.js"></script>
+  </head>
+  <body>    
+    <a-scene
+      info-message="htmlSrc: #messageText"
+      xr-mode-ui="XRMode: xr"      
+      light="defaultLightsEnabled: false"
+    >
+      <a-assets>
+        <a-asset-item id="messageText" src="aframe/message.html"></a-asset-item>
+        <img id="solMapa" src="assets/sol.jpg">
+        <img id="merMapa" src="assets/mercurio.png">
+        <img id="venMapa" src="assets/venus.jpg">
+        <img id="terMapa" src="assets/terra.jpg">
+        <img id="marMapa" src="assets/marte.jpg">
+        <img id="jupMapa" src="assets/jupiter.jpg">
+        <img id="satMapa" src="assets/saturno.jpg">
+        <img id="aneMapa" src="assets/aneis_saturno.png">
+        <img id="uraMapa" src="assets/urano.jpg">
+        <img id="netMapa" src="assets/netuno.jpg">        
+        <audio id="spaceSound" src="assets/space.wav" preload="auto"></audio>
+        <audio id="sunSound" src="assets/sun.wav" preload="auto"></audio>
+      </a-assets>     
+      <a-entity light="type: ambient; color: #ffffff; intensity: 0.02" anchored="persistent: true"></a-entity>       
+      <a-entity id="ceu" anchored="persistent: true">        
+        <a-entity id="skyWall1" material="color: #000000; roughness: 1"></a-entity>
+        <a-entity id="skyWall2" material="color: #000000; roughness: 1"></a-entity>
+        <a-entity id="skyWall3" material="color: #000000; roughness: 1"></a-entity>
+        <a-entity id="skyWall4" material="color: #000000; roughness: 1"></a-entity>
+        <a-entity id="skyWall5" material="color: #000000; roughness: 1"></a-entity>
+        <a-entity id="roomWall1" material="color: #afafac; roughness: 1"></a-entity>
+        <a-entity id="roomWall2" material="color: #afafac; roughness: 1"></a-entity>
+        <a-entity id="roomWall3" material="color: #777776; roughness: 1"></a-entity>
+        <a-entity id="roomWall4" material="color: #777776; roughness: 1"></a-entity>
+      </a-entity>      
+      <a-entity id="space" anchored="persistent: true" shadow="receive: true; cast: true">        
+        <a-entity id="solGeometry1" class="planet" >          
+          <a-entity id="solGeometry2">
+            <a-entity id="solGeometry3">
+              <a-entity id="solGeometry4">
+                <a-entity id="solLight">
+                  <a-entity light="type: point; color: #ffffff; intensity: 1.5; castShadow:true"></a-entity>
+                </a-entity>
+              </a-entity>
+            </a-entity>          
+          </a-entity>
+        </a-entity>
+        <a-entity id="merGeometry1" class="planet">
+          <a-entity id="merGeometry2">
+            <a-entity id="merGeometry3">
+              <a-entity id="merGeometry4">
+              </a-entity>
+            </a-entity>          
+          </a-entity>
+        </a-entity>
+        <a-entity id="venGeometry1" class="planet">
+          <a-entity id="venGeometry2">
+            <a-entity id="venGeometry3">
+              <a-entity id="venGeometry4">
+              </a-entity>
+            </a-entity>                
+          </a-entity>
+        </a-entity>
+        <a-entity id="terGeometry1" class="planet">
+          <a-entity id="terGeometry2">
+            <a-entity id="terGeometry3">
+              <a-entity id="terGeometry4">
+              </a-entity>
+            </a-entity>          
+          </a-entity>
+        </a-entity>
+        <a-entity id="marGeometry1" class="planet">
+          <a-entity id="marGeometry2">
+            <a-entity id="marGeometry3">
+              <a-entity id="marGeometry4">
+              </a-entity>
+            </a-entity>          
+          </a-entity>
+        </a-entity>
+        <a-entity id="jupGeometry1" class="planet">
+          <a-entity id="jupGeometry2">
+            <a-entity id="jupGeometry3">
+              <a-entity id="jupGeometry4">
+              </a-entity>
+            </a-entity>          
+          </a-entity>
+        </a-entity>
+        <a-entity id="satGeometry1" class="planet">
+          <a-entity id="satGeometry2">
+            <a-entity id="satGeometry3">
+              <a-entity id="satGeometry4">
+                <a-entity id="satUpRinGeometry"
+                          material="src:#aneMapa"
+                          rotation="-90 0 0"                          
+                          color="white"
+                          opacity="0.5">
+                </a-entity>
+                <a-entity id="satDownRinGeometry"
+                          material="src:#aneMapa"
+                          rotation="90 0 0"
+                          color="white"
+                          opacity="0.5">
+                </a-entity>
+              </a-entity>              
+            </a-entity>          
+          </a-entity>
+        </a-entity>
+        <a-entity id="uraGeometry1" class="planet">
+          <a-entity id="uraGeometry2">
+            <a-entity id="uraGeometry3">
+              <a-entity id="uraGeometry4">
+              </a-entity>
+            </a-entity>          
+          </a-entity>
+        </a-entity>
+        <a-entity id="netGeometry1" class="planet">
+          <a-entity id="netGeometry2">
+            <a-entity id="netGeometry3">
+              <a-entity id="netGeometry4">
+              </a-entity>
+            </a-entity>          
+          </a-entity>
+        </a-entity>
+      </a-entity>
+      
+      <a-entity id="startButton" button="label:; width: 0.05; color: white" position="0 0.05 -0.7" anchored="persistent: true"></a-entity>           
+      <a-entity id="panel" anchored="persistent: true">
+      <a-entity id="menu" geometry="primitive: box; width: 0.4; height: 0.4; depth: 0.01" position="0 -100 0" rotation="-30 0 0" material="color: gray" event-manager>
+        <a-entity id="button1" button="label: 1; width: 0.05" position="-0.15 0.16 0"></a-entity>
+        <a-entity id="button2" button="label: 2; width: 0.05" position="-0.05 0.16 0"></a-entity>
+        <a-entity id="button3" button="label: 3; width: 0.05" position=" 0.05 0.16 0"></a-entity>
+        <a-entity id="button4" button="label: 4; width: 0.05" position=" 0.15 0.16 0"></a-entity>
+        <a-entity id="solButton" button="label: sol; width: 0.08; color:#f7e927" position="-0.12 0.08 0"></a-entity>
+        <a-entity id="merButton" button="label: mer; width: 0.08; color:#8f8a4a" position=" 0.00 0.08 0"></a-entity>
+        <a-entity id="venButton" button="label: ven; width: 0.08; color:#c5aa51" position=" 0.12 0.08 0"></a-entity>
+        <a-entity id="terButton" button="label: ter; width: 0.08; color:#5cc465" position="-0.12 0.00 0"></a-entity>
+        <a-entity id="marButton" button="label: mar; width: 0.08; color:#d4805e" position=" 0.00 0.00 0"></a-entity>
+        <a-entity id="jupButton" button="label: jup; width: 0.08; color:#c5bd51" position=" 0.12 0.00 0"></a-entity>
+        <a-entity id="satButton" button="label: sat; width: 0.08; color:#beb070" position="-0.12 -0.08 0"></a-entity>
+        <a-entity id="uraButton" button="label: ura; width: 0.08; color:#7cc0c9" position=" 0.00 -0.08 0"></a-entity>
+        <a-entity id="netButton" button="label: net; width: 0.08; color:#5176c5" position=" 0.12 -0.08 0"></a-entity>        
+        <a-entity id="todosButton" button="label: todos; width: 0.25" position="0 -0.16 0"></a-entity>
+      </a-entity>
+      </a-entity>
+      <a-entity hand-tracking-controls="hand: left" shadow="cast: true"></a-entity>
+      <a-entity hand-tracking-controls="hand: right"></a-entity>
+    </a-scene>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();     
+                    
+        setPlanet('sol');
+        setPlanet('mer');
+        setPlanet('ven');
+        setPlanet('ter');
+        setPlanet('mar');
+        setPlanet('jup');
+        setPlanet('sat');
+        setPlanet('ura');
+        setPlanet('net');
+        
+        //Aneis de Saturno:
+        document.getElementById('satUpRinGeometry').setAttribute("geometry", `primitive: circle; radius: ${diametroPlanetario.sat_ring/2}`);
+        document.getElementById('satDownRinGeometry').setAttribute("geometry", `primitive: circle; radius: ${diametroPlanetario.sat_ring/2}`);
+        document.getElementById('satUpRinGeometry').setAttribute("shadow", "cast: false");
+        document.getElementById('satDownRinGeometry').setAttribute("shadow", "cast: false");
+        
+        function setPlanet (planet) {
+          const p = planet;                   
+          let d;
+          
+          const Dpla = escalas.a1.diametroPlanetario.max/diametroPlanetario.net**escalas.a1.diametroPlanetario.potencia;
+          
+          const Rorb = escalas.a1.raioOrbital.max/raioOrbital.net**escalas.a1.raioOrbital.potencia;                            
+          const Ttra = 1000*escalas.a1.periodoOrbital.max/periodoOrbital.net**escalas.a1.periodoOrbital.potencia;          
+          const Trot = 1000*escalas.a1.periodoRotacao.max/periodoRotacao.net**escalas.a1.periodoRotacao.potencia;
+                    
+          if (planet == 'sol') {
+            d = escalas.a1.diametroSolar*Dpla*diametroPlanetario['jup']**escalas.a1.diametroPlanetario.potencia;
+            document.getElementById(`${p}Geometry4`).setAttribute("material", `src: #${p}Mapa, emissiveIntensity: 0.5; emissive: #f7e927`);
+            document.getElementById(`${p}Geometry4`).setAttribute("sound", "src: #sunSound; autoplay: true; loop: true; refDistance: 0.15; rolloffFactor:10; volume: 1.0");
+            document.getElementById(`${p}Geometry4`).setAttribute("shadow", "cast: false");
+          }
+          else {
+            d = Dpla*diametroPlanetario[p]**escalas.a1.diametroPlanetario.potencia;
+            document.getElementById(`${p}Geometry4`).setAttribute("material", `src: #${p}Mapa`);
+            document.getElementById(`${p}Geometry4`).setAttribute("sound", "src: #spaceSound; autoplay: true; loop: true; refDistance: 0.3; rolloffFactor:4; volume: 0.3");
+          }
+          
+          document.getElementById(`${p}Geometry4`).setAttribute("scale", `${d} ${d} ${d}`);
+          document.getElementById(`${p}Geometry4`).setAttribute("geometry", "primitive: sphere; radius: 0.5");
+
+          document.getElementById(`${p}Geometry2`).setAttribute("position", `0 ${escalas.a1.altura} ${-Rorb*raioOrbital[p]**escalas.a1.raioOrbital.potencia}`);
+          document.getElementById(`${p}Geometry3`).setAttribute("rotation", `${inclinacaoEixo[p]} 0 0`);
+          document.getElementById(`${p}Geometry1`).setAttribute("animation", `property: rotation; to: 0 360 0; loop: true; dur: ${Ttra*periodoOrbital[p]**escalas.a1.periodoOrbital.potencia}; easing: linear; startEvents: resetAnimation${p}`);
+          document.getElementById(`${p}Geometry2`).setAttribute("animation", `property: rotation; to: 0 -360 0; loop: true; dur: ${Ttra*periodoOrbital[p]**escalas.a1.periodoOrbital.potencia}; easing: linear; startEvents: resetAnimation${p}`);
+          document.getElementById(`${p}Geometry4`).setAttribute("animation", `property: rotation; to: 0 360 0; loop: true; dur: ${Trot*periodoRotacao[p]**escalas.a1.periodoRotacao.potencia}; easing: linear; startEvents: resetAnimation${p}`);
+        }
+    
+        setSky(sala.larguraSala, sala.comprimentoSala, sala.alturaSala, sala.alturaBeiral, sala.tamanhoCeu);
+
+        function setSky (larguraSala, comprimentoSala, alturaSala, alturaBeiral, tamanhoCeu) {
+          let skyWall1 = document.getElementById("skyWall1");
+          let skyWall2 = document.getElementById("skyWall2");
+          let skyWall3 = document.getElementById("skyWall3");
+          let skyWall4 = document.getElementById("skyWall4");
+          let skyWall5 = document.getElementById("skyWall5");
+
+          let roomWall1 = document.getElementById("roomWall1");
+          let roomWall2 = document.getElementById("roomWall2");
+          let roomWall3 = document.getElementById("roomWall3");
+          let roomWall4 = document.getElementById("roomWall4");
+
+          skyWall1.setAttribute("geometry", `primitive: box; height: ${tamanhoCeu}; width: ${tamanhoCeu}; depth: 0.1`);
+          skyWall1.setAttribute("position", `0 ${alturaSala+tamanhoCeu/2+3} ${tamanhoCeu/2}`);
+          skyWall2.setAttribute("geometry", `primitive: box; height: ${tamanhoCeu}; width: ${tamanhoCeu}; depth: 0.1`);
+          skyWall2.setAttribute("position", `0 ${alturaSala+tamanhoCeu/2+3} ${-tamanhoCeu/2}`);
+          skyWall3.setAttribute("geometry", `primitive: box; height: ${tamanhoCeu}; width: ${tamanhoCeu}; depth: 0.1`);
+          skyWall3.setAttribute("position", `${tamanhoCeu/2} ${alturaSala+tamanhoCeu/2+3} 0`);
+          skyWall3.setAttribute("rotation", `0 ${90} 0`);
+          skyWall4.setAttribute("geometry", `primitive: box; height: ${tamanhoCeu}; width: ${tamanhoCeu}; depth: 0.1`);
+          skyWall4.setAttribute("position", `${-tamanhoCeu/2} ${alturaSala+tamanhoCeu/2+3} 0`);
+          skyWall4.setAttribute("rotation", `0 ${90} 0`);
+          skyWall5.setAttribute("geometry", `primitive: box; height: 0.1; width: ${tamanhoCeu}; depth: ${tamanhoCeu}`);
+          skyWall5.setAttribute("position", `0 ${alturaSala+tamanhoCeu} 0`);
+          
+          roomWall1.setAttribute("geometry", `primitive: box; height: ${alturaBeiral}; width: ${larguraSala}; depth: 0.1`);
+          roomWall1.setAttribute("position", `0 ${alturaSala-alturaBeiral/2} ${comprimentoSala/2}`);
+          roomWall2.setAttribute("geometry", `primitive: box; height: ${alturaBeiral}; width: ${larguraSala}; depth: 0.1`);
+          roomWall2.setAttribute("position", `0 ${alturaSala-alturaBeiral/2} ${-comprimentoSala/2}`);
+          roomWall3.setAttribute("geometry", `primitive: box; height: ${alturaBeiral}; width: ${comprimentoSala}; depth: 0.1`);
+          roomWall3.setAttribute("position", `${larguraSala/2} ${alturaSala-alturaBeiral/2} 0`);
+          roomWall3.setAttribute("rotation", `0 ${90} 0`);
+          roomWall4.setAttribute("geometry", `primitive: box; height: ${alturaBeiral}; width: ${comprimentoSala}; depth: 0.1`);
+          roomWall4.setAttribute("position", `${-larguraSala/2} ${alturaSala-alturaBeiral/2} 0`);
+          roomWall4.setAttribute("rotation", `0 ${90} 0`); 
+        }
+    
+    </script>
+  </body>
+</html>

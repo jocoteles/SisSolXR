@@ -1,0 +1,10 @@
+{
+    "name": "SisSol",
+    "version": "0.0.1",
+    "description": "Exploração Imersiva e Interativa do Sistema Solar em Realidade Mista para Educação em Astronomia",
+    "type": "module",
+    "dependencies": {
+        "express": "^4.19.2",
+        "socket.io": "^4.7.5"
+    }
+}
