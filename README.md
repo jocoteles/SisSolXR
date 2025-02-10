@@ -253,5 +253,15 @@ Uma possível dinâmica para conduzir uma atividade educacional com SisSolXR é 
 
 Ao utilizar o SisSolXR seguindo estas orientações, educadores podem proporcionar aos estudantes uma experiência de aprendizado imersiva, interativa e memorável sobre o Sistema Solar, explorando conceitos complexos de escala, movimento e características planetárias de uma forma inovadora e engajadora.
 
+## Dependências e Bibliotecas de Código Aberto Utilizadas
+
+Este projeto utiliza as seguintes bibliotecas de código aberto:
+
+*   **Express.js:**  Licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT). Usado para gerenciamento do servidor web (framework Express.js).
+*   **Socket.IO:** Licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT). Usado para comunicação em tempo real (Socket.IO).
+*   **A-Frame:** Licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT). Usado para criação da cena de Realidade Aumentada (A-Frame).
+
+As licenças MIT permitem o uso, modificação e distribuição dessas bibliotecas tanto para fins comerciais quanto não comerciais, desde que o aviso de copyright e a permissão sejam mantidos. Para mais detalhes, consulte os links para as licenças acima ou os arquivos de licença originais dentro dos pacotes das bibliotecas.
+
 ---
 Esta aplicação é a concretização de uma das ações dentro do projeto "Astronomia e cultura astronômica: do céu real ao céu virtual" financiado pelo CNPq por meio da Chamada CNPq/MCTI/FNDCT 39/2022 “Programa de Apoio a Museus e Centros de Ciência e Tecnologia e a Espaços Científico-Culturais” (processo 407086/2022-6) dentro da Linha 3: Divulgação Científica e Educação Museal.
