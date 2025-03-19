@@ -211,9 +211,12 @@
           document.getElementById(`${p}Geometry4`).setAttribute("animation", `property: rotation; to: 0 360 0; loop: true; dur: ${Trot*periodoRotacao[p]**escalas.a1.periodoRotacao.potencia}; easing: linear; startEvents: resetAnimation${p}`);
         }
     
-        setSky(sala.larguraSala, sala.comprimentoSala, sala.alturaSala, sala.alturaBeiral, sala.tamanhoCeu);
 
-        function setSky (larguraSala, comprimentoSala, alturaSala, alturaBeiral, tamanhoCeu) {
+        //setSkyRectangular(salaRet.larguraSala, salaRet.comprimentoSala, salaRet.alturaSala, salaRet.alturaBeiral, salaRet.tamanhoCeu);
+        
+        setSkyCircular(salaCil.diametroSala, salaCil.diametroCeu, salaCil.alturaSala, salaCil.alturaBeiral, salaCil.alturaCeu)
+
+        function setSkyRectangular (larguraSala, comprimentoSala, alturaSala, alturaBeiral, tamanhoCeu) {
           let skyWall1 = document.getElementById("skyWall1");
           let skyWall2 = document.getElementById("skyWall2");
           let skyWall3 = document.getElementById("skyWall3");
@@ -249,7 +252,32 @@
           roomWall4.setAttribute("position", `${-larguraSala/2} ${alturaSala-alturaBeiral/2} 0`);
           roomWall4.setAttribute("rotation", `0 ${90} 0`); 
         }
-    
+
+        function setSkyCircular(diametroSala, diametroCeu, alturaSala, alturaBeiral, alturaCeu) {
+          let skyWall = document.getElementById("skyWall1");
+          let skyTop = document.getElementById("skyWall5");
+
+          let roomWall = document.getElementById("roomWall1");
+
+          // Room cylindrical wall (hollow cylinder starting from alturaSala to alturaBeiral)
+          roomWall.setAttribute("geometry", `primitive: cylinder; radius: ${diametroSala / 2}; height: ${alturaBeiral}; openEnded: true`);
+          roomWall.setAttribute("position", `0 ${alturaSala + alturaBeiral/2} 0`);
+          roomWall.setAttribute("rotation", `0 0 0`);
+          roomWall.setAttribute("material", "side: double; color: #afafac");
+
+          // Sky cylindrical wall (hollow cylinder starting from alturaSala to alturaCeu)
+          let gap = 5;
+          skyWall.setAttribute("geometry", `primitive: cylinder; radius: ${diametroCeu / 2}; height: ${alturaCeu - alturaSala - gap}; openEnded: true`);
+          skyWall.setAttribute("position", `0 ${alturaSala + gap + (alturaCeu - alturaSala - gap)/2} 0`);
+          skyWall.setAttribute("rotation", `0 0 0`);
+          skyWall.setAttribute("material", "side: double; color: #000000");
+
+          // Sky top (circle closing the top of the sky cylinder)
+          skyTop.setAttribute("geometry", `primitive: circle; radius: ${diametroCeu / 2 + 0.5}; height: 0.1`);
+          skyTop.setAttribute("position", `0 ${alturaCeu} 0`);
+          skyTop.setAttribute("rotation", `-90 0 0`);
+          skyTop.setAttribute("material", "side: double; color: #000000");
+        }
     </script>
   </body>
 </html>

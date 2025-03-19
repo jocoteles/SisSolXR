@@ -1,9 +1,17 @@
-sala = { // todos em metros
+salaRet = { // Sala retangular, todos em metros
     'larguraSala': 7,
     'comprimentoSala': 7,
     'alturaSala': 3,
     'alturaBeiral': 1,
     'tamanhoCeu': 40
+};
+
+salaCil = { // Sala cilíndrica, todos em metros    
+    'diametroSala': 10.5,
+    'diametroCeu': 40,
+    'alturaCeu': 20,
+    'alturaSala': 3,
+    'alturaBeiral': 1
 }
 
 escalas = {
@@ -12,7 +20,7 @@ escalas = {
         'diametroSolar': 1.2,  //fração do diâmetro de júpiter
         'raioOrbital': {
             'potencia': 1,    
-            'max': 27 // [m]]
+            'max': 19 // [m]]
         },
         'diametroPlanetario': {
             'potencia': 1/8,
@@ -32,7 +40,7 @@ escalas = {
         'diametroSolar': 1.2,  //fração do diâmetro de júpiter
         'raioOrbital': {
             'potencia': 1/6,    
-            'max': 3 // [m]
+            'max': 4 // [m]
         },
         'diametroPlanetario': {
             'potencia': 1/6,
@@ -52,7 +60,7 @@ escalas = {
         'diametroSolar': 0.2,  //fração do diâmetro de júpiter
         'raioOrbital': {
             'potencia': 1/2,    
-            'max': 3 // [m]
+            'max': 4 // [m]
         },
         'diametroPlanetario': {
             'potencia': 1,
