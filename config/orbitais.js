@@ -1,3 +1,5 @@
+salaTipo = 'salaRet'; // Deve ser um dos tipos (sala...) abaixo.
+
 salaRet = { // Sala retangular, todos em metros
     'larguraSala': 7,
     'comprimentoSala': 7,
