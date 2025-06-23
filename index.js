@@ -29,6 +29,9 @@ io.on('connection', (socket) => {
     socket.on('stagePressed', (msg) => {
       io.emit('stagePressed', msg);
     });
+    socket.on('syncPressed', (msg) => {
+      io.emit('syncPressed', msg);
+    });
     socket.on('resetPressed', (msg) => {
       io.emit('resetPressed', msg);
     });

@@ -17,7 +17,8 @@ AFRAME.registerComponent('event-manager', {
     this.satButtonEl = document.querySelector('#satButton');
     this.uraButtonEl = document.querySelector('#uraButton');    
     this.netButtonEl = document.querySelector('#netButton');
-    this.todosButtonEl = document.querySelector('#todosButton');    
+    this.syncButtonEl = document.querySelector('#syncButton');    
+    this.resetButtonEl = document.querySelector('#resetButton');  
     this.startButtonEl = document.querySelector('#startButton');    
     this.menuEl = document.querySelector('#menu');    
 
@@ -34,7 +35,8 @@ AFRAME.registerComponent('event-manager', {
     this.satButtonEl.addEventListener('click', this.onClick);
     this.uraButtonEl.addEventListener('click', this.onClick);
     this.netButtonEl.addEventListener('click', this.onClick);
-    this.todosButtonEl.addEventListener('click', this.onClick);    
+    this.syncButtonEl.addEventListener('click', this.onClick);    
+    this.resetButtonEl.addEventListener('click', this.onClick);    
     this.startButtonEl.addEventListener('click', this.onClick);    
       
     //this.solButtonEl.addState('pressed');
@@ -76,13 +78,21 @@ AFRAME.registerComponent('event-manager', {
       }
     });
     
-    socket.on('resetPressed', (msg) => {      
+    socket.on('syncPressed', (msg) => {      
       const planets = document.querySelectorAll(".planet");
         for (let pEl of planets) {          
           pEl.setAttribute("rotation", "0 0 0");
           pEl.emit(`resetAnimation${pEl.id.slice(0,3)}`, null, true);          
         }
     });
+
+    socket.on('resetPressed', (msg) => {      
+      const planets = document.querySelectorAll(".planet");
+        for (let pEl of planets) {          
+          socket.emit('stagePressed', {stage: "a1", planet: pEl.id.slice(0,3)});  
+        }
+    });
+
   },
 
   bindMethods: function () {
@@ -122,8 +132,8 @@ AFRAME.registerComponent('event-manager', {
         targetEl === this.jupButtonEl ||
         targetEl === this.satButtonEl ||
         targetEl === this.uraButtonEl ||
-        targetEl === this.netButtonEl ||
-        targetEl === this.todosButtonEl) {
+        targetEl === this.netButtonEl /* ||
+        targetEl === this.syncButtonEl */) {
       this.solButtonEl.removeState('pressed');
       this.merButtonEl.removeState('pressed');
       this.venButtonEl.removeState('pressed');
@@ -133,13 +143,17 @@ AFRAME.registerComponent('event-manager', {
       this.satButtonEl.removeState('pressed');
       this.uraButtonEl.removeState('pressed');
       this.netButtonEl.removeState('pressed');
-      this.todosButtonEl.removeState('pressed');
+      //this.syncButtonEl.removeState('pressed');
       targetEl.addState('pressed');
       this.planet = targetEl.id.slice(0, 3);
     }
 
-    if (targetEl === this.todosButtonEl) {
-      socket.emit('resetPressed', 'reset');
+    if (targetEl === this.syncButtonEl) {
+      socket.emit('syncPressed', 'reset');
+    }
+
+    if (targetEl === this.resetButtonEl) {
+      socket.emit('resetPressed', 'resetAll');
     }
   }
 });
