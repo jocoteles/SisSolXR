@@ -211,10 +211,12 @@
           document.getElementById(`${p}Geometry4`).setAttribute("animation", `property: rotation; to: 0 360 0; loop: true; dur: ${Trot*periodoRotacao[p]**escalas.a1.periodoRotacao.potencia}; easing: linear; startEvents: resetAnimation${p}`);
         }
     
-
-        //setSkyRectangular(salaRet.larguraSala, salaRet.comprimentoSala, salaRet.alturaSala, salaRet.alturaBeiral, salaRet.tamanhoCeu);
-        
-        setSkyCircular(salaCil.diametroSala, salaCil.diametroCeu, salaCil.alturaSala, salaCil.alturaBeiral, salaCil.alturaCeu)
+        if (salaTipo == "salaRet") {
+          setSkyRectangular(salaRet.larguraSala, salaRet.comprimentoSala, salaRet.alturaSala, salaRet.alturaBeiral, salaRet.tamanhoCeu);
+        }
+        if (salaTipo == "salaCil") {
+          setSkyCircular(salaCil.diametroSala, salaCil.diametroCeu, salaCil.alturaSala, salaCil.alturaBeiral, salaCil.alturaCeu)
+        }
 
         function setSkyRectangular (larguraSala, comprimentoSala, alturaSala, alturaBeiral, tamanhoCeu) {
           let skyWall1 = document.getElementById("skyWall1");

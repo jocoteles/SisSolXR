@@ -1,3 +1,7 @@
+// Tipos de sala:
+
+salaTipo = salaRet;  // Escolher um dos tipos de sala abaixo
+
 salaRet = { // Sala retangular, todos em metros
     'larguraSala': 7,
     'comprimentoSala': 7,
@@ -13,6 +17,8 @@ salaCil = { // Sala cilíndrica, todos em metros
     'alturaSala': 3,
     'alturaBeiral': 1
 }
+
+// Dimensões e dinâmicas orbitais:
 
 escalas = {
     'a1': {
