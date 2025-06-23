@@ -4,10 +4,6 @@
     <meta charset="utf-8">
     <title>Sistema Solar</title>
     <meta name="description" content="Sistema Solar">
-    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Importante para PWA -->
-    <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon-16x16.png">
     <script src="aframe/aframe-locals.js"></script>
     <script src="aframe/info-message.js"></script>    
     <script src="aframe/color-change.js"></script>        
@@ -50,13 +46,13 @@
         <a-entity id="roomWall3" material="color: #777776; roughness: 1"></a-entity>
         <a-entity id="roomWall4" material="color: #777776; roughness: 1"></a-entity>
       </a-entity>      
-      <a-entity id="space" anchored="persistent: true" shadow="receive: false; cast: false">        
+      <a-entity id="space" anchored="persistent: true" shadow="receive: true; cast: true">        
         <a-entity id="solGeometry1" class="planet" >          
           <a-entity id="solGeometry2">
             <a-entity id="solGeometry3">
               <a-entity id="solGeometry4">
                 <a-entity id="solLight">
-                  <a-entity light="type: point; color: #ffffff; intensity: 1.5; castShadow:false"></a-entity>
+                  <a-entity light="type: point; color: #ffffff; intensity: 1.5; castShadow:true"></a-entity>
                 </a-entity>
               </a-entity>
             </a-entity>          
@@ -215,12 +211,10 @@
           document.getElementById(`${p}Geometry4`).setAttribute("animation", `property: rotation; to: 0 360 0; loop: true; dur: ${Trot*periodoRotacao[p]**escalas.a1.periodoRotacao.potencia}; easing: linear; startEvents: resetAnimation${p}`);
         }
     
-        if (salaTipo == "salaRet") {
-          setSkyRectangular(salaRet.larguraSala, salaRet.comprimentoSala, salaRet.alturaSala, salaRet.alturaBeiral, salaRet.tamanhoCeu);
-        }
-        if (salaTipo == "salaCil") {
-          setSkyCircular(salaCil.diametroSala, salaCil.diametroCeu, salaCil.alturaSala, salaCil.alturaBeiral, salaCil.alturaCeu)
-        }
+
+        //setSkyRectangular(salaRet.larguraSala, salaRet.comprimentoSala, salaRet.alturaSala, salaRet.alturaBeiral, salaRet.tamanhoCeu);
+        
+        setSkyCircular(salaCil.diametroSala, salaCil.diametroCeu, salaCil.alturaSala, salaCil.alturaBeiral, salaCil.alturaCeu)
 
         function setSkyRectangular (larguraSala, comprimentoSala, alturaSala, alturaBeiral, tamanhoCeu) {
           let skyWall1 = document.getElementById("skyWall1");
@@ -284,28 +278,6 @@
           skyTop.setAttribute("rotation", `-90 0 0`);
           skyTop.setAttribute("material", "side: double; color: #000000");
         }
-
-        // Registro do Service Worker
-        if ('serviceWorker' in navigator) {
-          window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/sw.js')
-              .then(registration => {
-                console.log('SW registered: ', registration.scope);
-              })
-              .catch(registrationError => {
-                console.log('SW registration failed: ', registrationError);
-              });
-          });
-        }
-        // Adicionando manipuladores de erro global
-        window.onerror = function(message, source, lineno, colno, error) {
-            console.error("Error:", { message, source, lineno, colno, error: error ? error.stack : 'N/A' });
-            return false;
-        };
-        window.onunhandledrejection = function(event) {
-            console.error("Unhandled Promise Rejection:", event.reason);
-        };
-
     </script>
   </body>
 </html>
